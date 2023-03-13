@@ -10,7 +10,8 @@
                  [org.xerial/sqlite-jdbc "3.41.0.0"]
                  [com.github.seancorfield/honeysql "2.4.1002"]
                  [buddy/buddy-auth "3.0.1"]
-                 [buddy/buddy-hashers "1.8.158"]]
+                 [buddy/buddy-hashers "1.8.158"]
+                 [thheller/shadow-cljs "2.22.2"]]
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler kunismos.handler/app}
   :profiles
