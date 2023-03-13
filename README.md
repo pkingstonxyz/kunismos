@@ -14,10 +14,10 @@ Should you want to look back on your entries, you may, but the point is to remov
 
 | Done | Rating | Name                                                                                         |
 | ---- | ------ | ---                                                                                          |
-|      | 3      | Create a page for users to create an account                                                 |
-|      | 3      | Create a way to store hashed passwords with usernames & permissions in database              |
-|      | 3      | Create a way to get the passwords and permissions from said database for validation function |
-|      | 5      | Restructure routes to have proper auth gateways                                              |
+| +    | 3      | Create a page for users to create an account                                                 |
+| +    | 3      | Create a way to store hashed passwords with usernames & permissions in database              |
+| +    | 3      | Create a way to get the passwords and permissions from said database for validation function |
+| +    | 5      | Restructure routes to have proper auth gateways                                              |
 |      | 2      | Add shadow-cljs                                                                              |
 |      | 2      | Make sure page has proper js from compiled cljs                                              |
 |      | 5      | Write all needed JS                                                                          |
