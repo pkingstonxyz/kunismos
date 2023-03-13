@@ -77,11 +77,24 @@
   [username]
   (= (:username (get-user username)) username))
 
+(defn strip-auth-info
+  "Strips a user map of sensitive information like salt and pasword hash"
+  [user]
+  (-> user
+      (dissoc :password)
+      (dissoc :salt)
+      (dissoc :creation_date)))
+
+(defn authenticated?
+  "Checks if a request is authenticated"
+  [request]
+  (string? (:username (:identity (:session request)))))
+
 ; TODO: Write a function that will allow users to change their password NOTE: This is a stretch goal
 
 ;; All auth handlers/routes/whatever these are called
-;; NOTE: I credit a lot of this to Adam Bard's 2015 tutorial. I had to update a few of the things though
 
+;; NOTE: I credit a lot of this to Adam Bard's 2015 tutorial. I had to update quite a few of the things though
 (def backend (backends/session))
 
 (defn lookup-user [username password]
@@ -92,8 +105,8 @@
 (defn do-login [{{username :username password :password nextpage :next} :params
                  session :session :as _}] ;Change _ to req
   (if-let [user (lookup-user username password)]    ; lookup-user defined elsewhere
-    (assoc (redirect (or nextpage "/") 303)                 ; Redirect to "next" or /
-           :session (assoc session :identity user)) ; Add an :identity to the session
+    (assoc (redirect (or nextpage "/") 303)                 ; Redirect to :next or /
+           :session (assoc session :identity (strip-auth-info user))) ; Add an :identity to the session
     (redirect "/login?error=true" 303)))                  ; If no user, show a login page
 
 (defn do-logout [{session :session}]
@@ -107,7 +120,7 @@
     (do 
       (insert-user! (format-user username password))
       (redirect (or nextpage "/login") 303))
-    (redirect "/createaccount?error=\"username-already-exists\"" 303)))
+    (redirect "/createaccount?error=true" 303)))
 
 ;; REPL Stuff
 

@@ -18,16 +18,19 @@
 
 ;; The pages
 
-(defn landing [{{naughty :naughty} :params}]
+;(defn landing [{{naughty :naughty} :params}]
+(defn landing [req]
   (page
-    (when (boolean naughty)
+    ;(when (boolean naughty)
+    (when (boolean (:naughty (:params req)))
       [:p "You must create an account or be logged in to do that"])
+    [:p (str req)]
     [:h1 "Kunismos landing"]))
 
 ;TODO: Write the GET /new page
 (defn create [_]
   (page 
-    (form-to [:post ""]
+    (form-to [:post "/create"]
              (anti-forgery-field)
              (text-area {:autofocus "autofocus"} "text")
              (submit-button "submit"))))
@@ -39,8 +42,8 @@
           [:ul (for [entry (db/get-entries id)] [:li (:text entry)])])))
 
 ;TODO: Fix the POST /new page
-(defn create-post [{{text :text} :params}]
-  (db/create-entry text 1)
+(defn create-post [{{text :text} :params {{id :id} :identity} :session}]
+  (db/create-entry text (int id))
   (redirect "/" 303)) ;Code 303 indicates that we're redirecting to a GET resource after a POST
 
 ;TODO: Write the GET /login page
