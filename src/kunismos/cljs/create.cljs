@@ -1,12 +1,16 @@
 (ns kunismos.cljs.create)
 
-(enable-console-print!)
+;(enable-console-print!)
 
-(prn "Hello clojurescript!")
+;(prn "Hello clojurescript!")
 
 (defn ctrl+enter-submit-handler 
   [e]
-  ;(let [k (.-key e)]
-    ;(prn k)))
-  (prn (.-keyCode e)))
+  (let [kCode  (.-keyCode e)
+        kMeta  (.-metaKey e)
+        kCtrl  (.-ctrlKey e)
+        target (.-target e)]
+    (when (and (= kCode 13) (or kMeta kCtrl)) 
+      (.submit (.-form target)))))
+
 (js/document.addEventListener "keydown" ctrl+enter-submit-handler)

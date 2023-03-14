@@ -24,9 +24,10 @@
         ; (See the ClojureScript compiler documentation for details.)
         :compiler {
           :output-to "resources/public/js/main.js"  ; default: target/cljsbuild-main.js
-          :optimizations :advanced
+          ;:optimizations :advanced
+          :optimizations :whitespace
           :pretty-print true}}]}
-  ;:hooks [leiningen.cljsbuild]
+  :hooks [leiningen.cljsbuild]
   :ring {:handler kunismos.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
