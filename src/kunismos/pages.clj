@@ -11,7 +11,7 @@
 (defn page [body & args]
   (html5 
     {:lang "en"}
-    [:head (include-css "css/kunismos.css") (include-js "dev-main.js")]
+    [:head (include-css "css/kunismos.css") (include-js "js/main.js")]
     [:body
      [:header [:h1 "Kunismos"]]
      [:main body args]]))
