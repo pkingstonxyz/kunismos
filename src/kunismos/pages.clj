@@ -1,6 +1,6 @@
 (ns kunismos.pages
   (:require [hiccup.core :refer [html]]
-            [hiccup.page :refer [html5 include-css]]
+            [hiccup.page :refer [html5 include-css include-js]]
             [hiccup.form :refer [form-to text-area submit-button text-field password-field]]
             [ring.util.anti-forgery :refer [anti-forgery-field]]
             [ring.util.response :refer [redirect]]
@@ -11,7 +11,7 @@
 (defn page [body & args]
   (html5 
     {:lang "en"}
-    [:head (include-css "css/kunismos.css")]
+    [:head (include-css "css/kunismos.css") (include-js "dev-main.js")]
     [:body
      [:header [:h1 "Kunismos"]]
      [:main body args]]))

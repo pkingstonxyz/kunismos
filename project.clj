@@ -11,8 +11,20 @@
                  [com.github.seancorfield/honeysql "2.4.1002"]
                  [buddy/buddy-auth "3.0.1"]
                  [buddy/buddy-hashers "1.8.158"]
-                 [thheller/shadow-cljs "2.22.2"]]
-  :plugins [[lein-ring "0.12.5"]]
+                 [org.clojure/clojurescript "1.11.54"]]
+
+  :plugins [[lein-ring "0.12.5"]
+            [lein-cljsbuild "1.1.8"]]
+  :cljsbuild {
+    :builds [{
+        ; The path to the top-level ClojureScript source directory:
+        :source-paths ["src/kunismos/cljs"]
+        ; The standard ClojureScript compiler options:
+        ; (See the ClojureScript compiler documentation for details.)
+        :compiler {
+          :output-to "resources/public/js/main.js"  ; default: target/cljsbuild-main.js
+          :optimizations :whitespace
+          :pretty-print true}}]}
   :ring {:handler kunismos.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
