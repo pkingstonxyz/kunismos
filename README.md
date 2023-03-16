@@ -2,7 +2,7 @@
 
 *κυνισμός -οῦ* | Cynical philosophy or conduct
 
-Kunismos is a journalling application that is designed to get out of your way so that you can live your life.
+[Kunismos](https://kunismos.pkingston.xyz) is a journalling application that is designed to get out of your way so that you can live your life.
 
 There are no frills. Once you have an account, you write, press ctrl+enter and your entry is saved in your journal.
 
@@ -21,7 +21,8 @@ Should you want to look back on your entries, you may, but the point is to remov
 | +    | 2      | Add cljs                                                                                     |
 | +    | 2      | Make sure page has proper js from compiled cljs                                              |
 | +    | 5      | Write all needed JS                                                                          |
-|      | 5      | Style all pages                                                                              |
+| +    | 5      | Style all pages                                                                              |
+| +    | 5      | Deployed to server                                                                           |
 
 ---
 
