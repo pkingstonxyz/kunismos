@@ -17,20 +17,26 @@
   :plugins [[lein-ring "0.12.5"];]
             [lein-cljsbuild "1.1.8"]]
   :cljsbuild {
-    :builds [{
-        ; The path to the top-level ClojureScript source directory:
-        :source-paths ["src/kunismos/cljs"]
-        ; The standard ClojureScript compiler options:
-        ; (See the ClojureScript compiler documentation for details.)
-        :compiler {
-          :output-to "resources/public/js/main.js"  ; default: target/cljsbuild-main.js
-          ;:optimizations :advanced
-          :optimizations :whitespace
-          :pretty-print true}}]}
+              :builds {
+                       :create {
+                        :source-paths ["src/kunismos/cljs/create"]
+                        :compiler {
+                                   :output-to "resources/public/js/main.js"  ; default: target/cljsbuild-main.js
+                                   ;:optimizations :advanced
+                                   :optimizations :whitespace
+                                   :pretty-print true}}
+                       :landing {
+                        :source-paths ["src/kunismos/cljs/landing"]
+                        :compiler {
+                                   :output-to "resources/public/js/landing.js"  ; default: target/cljsbuild-main.js
+                                   ;:optimizations :advanced
+                                   :optimizations :whitespace
+                                   :pretty-print true}}
+                       }}
   :hooks [leiningen.cljsbuild]
   :ring {:handler kunismos.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         ;[ring/ring-mock "0.3.2"]
-[ring/ring-mock "0.3.2" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+                        [ring/ring-mock "0.3.2" :exclusions [com.fasterxml.jackson.core/jackson-core]]
                         ]}})

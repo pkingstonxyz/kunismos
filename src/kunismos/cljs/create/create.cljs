@@ -1,4 +1,4 @@
-(ns kunismos.cljs.create)
+(ns kunismos.cljs.create.create)
 
 ;(enable-console-print!)
 
@@ -14,3 +14,4 @@
       (.submit (.-form target)))))
 
 (js/document.addEventListener "keydown" ctrl+enter-submit-handler)
+

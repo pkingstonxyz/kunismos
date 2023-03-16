@@ -77,6 +77,18 @@
   [username]
   (= (:username (get-user username)) username))
 
+(defn is-invalid-username?
+  "Checks if a username is valid"
+  [username]
+  (let [len (count (str username))]
+    (or (< 32 len) (> 4 len))))
+
+(defn is-invalid-password?
+  "Checks if a password is valid"
+  [password]
+  (let [len (count password)]
+    (or (< 32 len) (> 4 len))))
+
 (defn strip-auth-info
   "Strips a user map of sensitive information like salt and pasword hash"
   [user]
@@ -110,17 +122,26 @@
     (redirect "/login?error=true" 303)))                  ; If no user, show a login page
 
 (defn do-logout [{session :session}]
-  (-> (redirect "/login" 303)                           ; Redirect to login
+  (-> (redirect "/" 303)                           ; Redirect to login
       (assoc :session (dissoc session :identity)))) ; Remove :identity from session
 
 (defn do-create-user 
   "Creates a user"
   [{{username :username password :password nextpage :next} :params session :session :as _}] ;Change _ to req
-  (if-not (is-user-in-db? username)
-    (do 
-      (insert-user! (format-user username password))
-      (redirect (or nextpage "/login") 303))
-    (redirect "/createaccount?error=true" 303)))
+  ;(if-not (or (is-invalid-username? username) (is-invalid-password? password) (is-user-in-db? username))
+  ;  (do 
+  ;    (insert-user! (format-user username password))
+  ;    (redirect (or nextpage "/login") 303))
+  ;  (redirect "/createaccount?error=true" 303)))
+  (if (is-invalid-username? username)
+    (redirect "/createaccount?error=true&invaliduname=true")
+    (if (is-invalid-password? password)
+      (redirect "/createaccount?error=true&invalidpass=true")
+      (if (is-user-in-db? username)
+        (redirect "/createaccount?unametaken=true")
+        (do 
+          (insert-user! (format-user username password))
+          (redirect (or nextpage "/login") 303))))))
 
 ;; REPL Stuff
 

@@ -1,16 +1,197 @@
+:root {
+	--primary: #7678ed;
+	--secondary: #8DAB7F;
+	--black: #221e22;
+	--trublack: black;
+}
+* {
+	font-family: 'Fira Code', monospace;
+	color: var(--primary);
+}
 body {
 	padding: 0;
 	margin: 0;
+	background-color: #31263e;
+	background: linear-gradient(
+		/*#44355b 6px,
+		#31263e 18px*/
+		var(--black) 3px,
+		var(--trublack) 9px
+	);
+	background-size: 100% 9px;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	animation: scanlines 15s linear infinite;
 }
 body * {
 	padding: 0;
 	margin: 0;
-	border: 1px solid magenta;
 }
 
+@keyframes scanlines {
+	from {
+		background-position: 0% 0%;
+	}
+	to {
+		background-position: 100% 100%;
+	}
+}
+p {
+		text-shadow: 0 0 1px var(--primary), 0 0 2px var(--primary);
+}
+pre {
+		text-shadow: 0 0 1px var(--primary), 0 0 2px var(--primary);
+}
+h2 {
+		text-shadow: 0 0 2px var(--primary), 0 0 3px var(--primary);
+}
 main {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	overflow: visible;
+}
+.main_content {
 	display: flex;
-	flex-direction: vertical;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.l_nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	gap: 10px;
+	width: 100%
+}
+.title {
+	font-size: 4rem;
+	animation: glow 1s ease-in infinite alternate-reverse;
+	text-align: center;
+}
+@keyframes glow {
+	from {
+		text-shadow: 0 0 6px var(--primary), 0 0 10px var(--primary);
+	}
+	to {
+		text-shadow: 0 0 12px var(--primary), 0 0 20px var(--primary);
+	}
+}
+.l_tagline {
+	margin-top: 10px;
+	font-size: 2rem;
+	text-align: center;
+}
+.l_subtitle {
+	text-align: center;
+}
+.l_nav p {
+	background-color: var(--black);
+	border-radius: 6px;
+	border: 3px solid var(--secondary);
+	color: var(--secondary);
+	font-size: 2rem;
+}
+a {
+	text-decoration: none;
+}
+a h2 {
+	color: var(--secondary);
 }
 
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	margin: 10px;
+}
 
+input[type=text] {
+	background-color: var(--black);
+	border-radius: 6px;
+	border: 3px solid var(--secondary);
+	color: var(--secondary);
+	font-size: 1rem;
+  -webkit-text-fill-color: white !important;
+}
+input[type=password] {
+	background-color: var(--black);
+	border-radius: 6px;
+	border: 3px solid var(--secondary);
+	color: var(--secondary);
+	font-size: 1rem;
+  -webkit-text-fill-color: white !important;
+}
+input[type=submit] {
+	background-color: var(--black);
+	border-radius: 6px;
+	border: 3px solid var(--secondary);
+	color: var(--secondary);
+	font-size: 1rem;
+}
+textarea {
+	height: 90%;
+	width: 100%;
+	background-color: #00000000;
+	border: none;
+	resize: none;
+	color: var(--primary);
+	font-size: 2rem;
+}
+textarea:focus {
+	outline: none;
+	border: none;
+}
+.c_main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	max-width: 70%;
+	margin: auto;
+	border-left: dashed 1px var(--secondary);
+	border-right: dashed 1px var(--secondary);
+	padding-left: 10px;
+	padding-right: 10px;
+	gap: 5px;
+}
+.c_form {
+	display: block;
+	margin: 0px;
+	width: 100%;
+	height: 80%;
+}
+.c_nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	gap: 30px;
+}
+.j_content {
+	margin: auto;
+	max-width: 70%;
+}
+.j_entry {
+	white-space: pre-wrap;
+	font-size: 1.5rem;
+}
+.j_date {
+	font-size: 1rem;
+}
+.j_spacing {
+	margin-top: 15px;
+}
+.j_nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 30px;
+}
+.j_heading {
+	text-align: center;
+}
