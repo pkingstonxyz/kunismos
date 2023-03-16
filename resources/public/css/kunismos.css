@@ -11,7 +11,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #31263e;
+	background-color: var(--black);
 	background: linear-gradient(
 		/*#44355b 6px,
 		#31263e 18px*/
