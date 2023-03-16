@@ -28,7 +28,7 @@
   (c/GET  "/create" req (gateway req pages/create (redirect "/landing?naughty=true")))
   (c/POST "/create" req (gateway req pages/create-post (redirect "/landing?naughty=true" 303)))
   (c/GET  "/journal" req (gateway req pages/journal (redirect "/landing?naughty=true")))
-  (c/GET "/login" _ pages/login)
+  (c/GET "/login" req (gateway req pages/create pages/login))
   (c/POST "/login" _ auth/do-login)
   (c/ANY "/logout" _ auth/do-logout)
   (c/GET "/createaccount" _ pages/createaccount)
