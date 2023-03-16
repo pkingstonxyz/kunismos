@@ -1,6 +1,6 @@
 (ns kunismos.cljs.landing.landing)
 
-;(enable-console-print!)
+(enable-console-print!)
 ;(prn "Hello clojurescript!")
 
 (defn random-chars
@@ -35,3 +35,8 @@
     (dotimes [round (inc (count originalText))]
       (js/setTimeout #(set! (.-innerText e) (reset-up-to round originalText)) (+ endTime (* round duration))))
   ))
+
+(let [el (.getElementById js/document "title")]
+  (set! (.-onmouseover el) #(glitchtext el)))
+;(let [element (.getElementById js/document "title")]
+;  (.setAttribute element "onmouseover" (this-as this #(glitchtext this))))

@@ -36,9 +36,13 @@
 
 (def title 
   "The kunismos title h1"
-  [:div (include-js "js/landing.js")
+  [:div 
+   ;(include-js "js/landing.js")
    [:a {:href "/landing"} 
-    [:h1.title {:onmouseover "kunismos.cljs.landing.landing.glitchtext(this)"} "κυνισμός"]]])
+    ;[:h1#title.title {:onmouseover "Je(this)"} "κυνισμός"]]
+    [:h1#title.title  "κυνισμός"]]
+   (include-js "js/landing.js")
+   ])
 
 (defn errtext
   "The error text"
