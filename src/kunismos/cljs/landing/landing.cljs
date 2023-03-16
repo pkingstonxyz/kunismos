@@ -1,6 +1,6 @@
 (ns kunismos.cljs.landing.landing)
 
-(enable-console-print!)
+;(enable-console-print!)
 ;(prn "Hello clojurescript!")
 
 (defn random-chars
