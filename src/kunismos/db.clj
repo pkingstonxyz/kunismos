@@ -1,6 +1,7 @@
 (ns kunismos.db
   (:require [next.jdbc :as jdbc]
-            [next.jdbc.result-set :as rs]))
+            [next.jdbc.result-set :as rs]
+            [hiccup.util :as hu]))
 
 
 ;NOTE: Doing all of this database stuff was pretty confusing, especially in regards to when/where I create my tables. I got it figured out though. The tables are created and dropped via migrations! I'm just doing everything in the REPL though.
@@ -25,4 +26,4 @@
   (jdbc/execute! ds [(format "select * from kunismos where user_id=%d order by date desc" userid)] {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))
 
 (defn create-entry [text uid]
-  (jdbc/execute! ds [(format "insert into kunismos(user_id,text) values(%d,\"%s\")" uid text)]))
+  (jdbc/execute! ds [(format "insert into kunismos(user_id,text) values(%d,\"%s\")" uid (hu/escape-html text))]))
