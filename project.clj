@@ -22,15 +22,15 @@
                         :source-paths ["src/kunismos/cljs/create"]
                         :compiler {
                                    :output-to "resources/public/js/main.js"  ; default: target/cljsbuild-main.js
-                                   ;:optimizations :advanced
-                                   :optimizations :whitespace
+                                   :optimizations :advanced
+                                   ;:optimizations :whitespace
                                    :pretty-print true}}
                        :landing {
                         :source-paths ["src/kunismos/cljs/landing"]
                         :compiler {
                                    :output-to "resources/public/js/landing.js"  ; default: target/cljsbuild-main.js
-                                   ;:optimizations :advanced
-                                   :optimizations :whitespace
+                                   :optimizations :advanced
+                                   ;:optimizations :whitespace
                                    :pretty-print true}}
                        }}
   :hooks [leiningen.cljsbuild]
