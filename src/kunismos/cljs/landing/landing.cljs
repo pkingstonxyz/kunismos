@@ -1,6 +1,6 @@
 (ns kunismos.cljs.landing.landing)
 
-(enable-console-print!)
+;(enable-console-print!)
 ;(prn "Hello clojurescript!")
 
 (defn random-chars
@@ -28,7 +28,7 @@
         repetitions 10 
         endTime (* duration repetitions)
         originalText "κυνισμός"]
-    (prn originalText)
+    ;(prn originalText)
     (dotimes [timeScalar repetitions] ;Garble the text for awhile
       (js/setTimeout #(glitchify-text e) (+ duration (* timeScalar duration))))
     ;(js/setTimeout #(set! (.-innerText e) (str originalText)) (+ duration (* repetitions duration)))
